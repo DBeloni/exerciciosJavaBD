@@ -27,3 +27,16 @@ CREATE TABLE emprestimo (
 	FOREIGN KEY (id_item) REFERENCES item(id)
 );
 
+INSERT INTO item (id, codigo, titulo, tipo, autor, edicao) VALUES
+(1, 'LIV001', 'O Senhor dos Anéis', 'LIVRO', 'J.R.R. Tolkien', '1ª Edição'),
+(2, 'LIV002', '1984', 'LIVRO', 'George Orwell', '1ª Edição'),
+(3, 'REV001', 'Revista Ciência Hoje', 'REVISTA', 'Vários Autores', 'Edição 100'),
+(4, 'REV002', 'Revista Super Interessante', 'REVISTA', 'Vários Autores', 'Edição 200');
+
+INSERT INTO usuario (id, nome, tipo, limite_itens) VALUES
+(1, 'Alice Silva', 'ALUNO', 3),
+(2, 'Bob Santos', 'PROFESSOR', 5);
+
+INSERT INTO emprestimo (id, id_usuario, id_item, data_retirada, data_devolucao_prevista) VALUES
+(1, 1, 1, '2024-06-01', '2024-06-15'),
+(2, 2, 3, '2024-06-05', '2024-06-19');
