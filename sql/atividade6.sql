@@ -16,3 +16,8 @@ JOIN usuario u ON u.id = e.id_usuario
 GROUP BY u.id, u.nome
 ORDER BY total_multa DESC;
 
+-- Consulta 4
+SELECT i.titulo
+FROM item i
+LEFT JOIN emprestimo e ON i.id = e.id_item AND e.data_devolucao IS NULL
+WHERE i.tipo = 'LIVRO' AND i.disponivel = true AND e.id IS NULL;
