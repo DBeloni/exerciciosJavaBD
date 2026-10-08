@@ -40,3 +40,11 @@ INSERT INTO usuario (id, nome, tipo, limite_itens) VALUES
 INSERT INTO emprestimo (id, id_usuario, id_item, data_retirada, data_devolucao_prevista) VALUES
 (1, 1, 1, '2024-06-01', '2024-06-15'),
 (2, 2, 3, '2024-06-05', '2024-06-19');
+
+UPDATE item
+SET disponivel = false
+WHERE id IN (
+	SELECT id_item
+	FROM emprestimo
+	WHERE data_devolucao IS NULL
+);
