@@ -3,14 +3,14 @@ package implemented;
 import abstracts.Usuario;
 
 public class Aluno extends Usuario {
-    private final int itensPermitidos = 3;
+    private static final int ITENS_PERMITIDOS = 3;
 
-    public Aluno( String nome, int quantidadeEmprestada ) {
-        super(nome, quantidadeEmprestada);
+    public Aluno(String nome) {
+        super(nome);
     }
 
     @Override
     public int getItensPermitidos() {
-        return this.itensPermitidos;
+        return ITENS_PERMITIDOS;
     }
 }

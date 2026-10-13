@@ -3,14 +3,14 @@ package implemented;
 import abstracts.Usuario;
 
 public class Professor extends Usuario {
-    private final int itensPermitidos = 5;
+    private static final int ITENS_PERMITIDOS = 5;
 
-    public Professor ( String nome, int quantidadeEmprestada ) {
-        super(nome, quantidadeEmprestada);
+    public Professor(String nome) {
+        super(nome);
     }
 
     @Override
     public int getItensPermitidos() {
-        return this.itensPermitidos;
+        return ITENS_PERMITIDOS;
     }
 }

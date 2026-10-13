@@ -3,9 +3,8 @@ package implemented;
 import abstracts.ItemBiblioteca;
 
 public class Livro extends ItemBiblioteca {
-
-    public Livro ( String codigo, String titulo, boolean disponivel ) {
-        super(codigo, titulo, disponivel);
+    public Livro(String codigo, String titulo) {
+        super(codigo, titulo);
     }
 
     @Override
@@ -15,6 +14,6 @@ public class Livro extends ItemBiblioteca {
 
     @Override
     public double getMultaDia() {
-        return 0.5;
+        return 0.50;
     }
 }

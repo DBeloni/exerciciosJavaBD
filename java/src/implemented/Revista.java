@@ -3,9 +3,8 @@ package implemented;
 import abstracts.ItemBiblioteca;
 
 public class Revista extends ItemBiblioteca {
-
-    public Revista ( String codigo, String titulo, boolean disponivel ) {
-        super(codigo, titulo, disponivel);
+    public Revista(String codigo, String titulo) {
+        super(codigo, titulo);
     }
 
     @Override
@@ -15,6 +14,6 @@ public class Revista extends ItemBiblioteca {
 
     @Override
     public double getMultaDia() {
-        return 1.0;
+        return 1.00;
     }
 }
