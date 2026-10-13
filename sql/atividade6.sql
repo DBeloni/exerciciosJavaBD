@@ -1,23 +1,25 @@
--- Consulta 1
-SELECT codigo, titulo, tipo, disponivel AS disponibilidade
-FROM item;
+SELECT i.codigo, i.titulo, i.tipo,
+       CASE WHEN e.id IS NULL THEN i.disponivel ELSE FALSE END AS disponibilidade
+FROM item i
+LEFT JOIN emprestimo e
+       ON e.item_id = i.id AND e.data_devolucao IS NULL
+ORDER BY i.codigo;
 
--- Consulta 2
 SELECT u.nome, i.titulo
 FROM emprestimo e
-JOIN usuario u ON u.id = e.id_usuario
-JOIN item i ON e.id_item = i.id
-WHERE e.data_devolucao IS NULL;
+JOIN usuario u ON u.id = e.usuario_id
+JOIN item i ON i.id = e.item_id
+WHERE e.data_devolucao IS NULL
+ORDER BY u.nome, i.titulo;
 
--- Consulta 3
-SELECT u.nome, SUM(e.valor_multa) AS total_multa
-FROM emprestimo e
-JOIN usuario u ON u.id = e.id_usuario
+SELECT u.nome, COALESCE(SUM(e.valor_multa), 0.00) AS total_multa
+FROM usuario u
+LEFT JOIN emprestimo e ON e.usuario_id = u.id
 GROUP BY u.id, u.nome
-ORDER BY total_multa DESC;
+ORDER BY total_multa DESC, u.nome;
 
--- Consulta 4
-SELECT i.titulo
+SELECT i.codigo, i.titulo, i.tipo, i.disponivel
 FROM item i
-LEFT JOIN emprestimo e ON i.id = e.id_item AND e.data_devolucao IS NULL
-WHERE i.tipo = 'LIVRO' AND i.disponivel = true AND e.id IS NULL;
+LEFT JOIN emprestimo e ON e.item_id = i.id
+WHERE e.id IS NULL
+ORDER BY i.codigo;
